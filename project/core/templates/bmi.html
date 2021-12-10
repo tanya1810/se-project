@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{%load static%}
+{% block body %}
+
+<h1>
+  Calculate Your BMI
+</h1>
+
+
+
+<!-- action="." is same as action="/bmi/" -->
+<form action="." method="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Calculate" />
+</form>
+
+{% if bmi %}
+<h2>
+  Your BMI is {{bmi}}.
+</h2>
+<centre>
+  <img src="{% static 'core/bmi.jpg/' %}" height="500" width="80%">
+  </centre>
+{% endif %}
+
+{% endblock %}
